@@ -1,10 +1,10 @@
 const fs = require('fs');
 const util = require('util')
-var inquirer = require('inquirer')
-// var generate = require('./Utility/generateMarkdown');
-// const generateMarkdown = require("./Utility/generateMarkdown");
+const inquirer = require('inquirer');
+const generate = require('./Utility/generateMarkdown');
+let data
 
-const appendFileAsync = util.promisify(fs.appendFile)
+const writeFileAsync = util.promisify(fs.writeFile)
 // array of questions for user
 inquirer
 .prompt([
@@ -34,6 +34,7 @@ inquirer
         name: 'license',
         message: 'What license do you want to use?',
         choices: ['mit','afl-3.0', 'apache-2.0','gpl','wtfpl','unlicense'],
+        
       },
       {
         type: 'input',
@@ -52,23 +53,6 @@ inquirer
       },
     ])
     .then(answers => {
-        return `# ${data.title}
-  
-        `;
-        
-      })
-// function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile("test.md", answers.title, function(err) {
-        if (err) {
-          console.log(err);
-        }
-      });
-
-}
-// function to initialize program
-
-function init(){
-
-// function call to initialize program
-}
+        writeFileAsync('test.md',generate.generateMarkdown(answers))
+    })
+    .catch(console.error)
