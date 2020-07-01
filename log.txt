@@ -1,0 +1,20 @@
+{
+  "toBeDelivered": true,
+  "phone": "7174227751",
+  "size": "small",
+  "quantity": 6,
+  "toppings": "PepperoniCheese",
+  "beverage": "Pepsi",
+  "comments": "l",
+  "prize": "fries"
+}
+{
+  "toBeDelivered": false,
+  "phone": "7174227751",
+  "size": "large",
+  "quantity": 4,
+  "toppings": "PepperoniCheese",
+  "beverage": "Pepsi",
+  "comments": "5",
+  "prize": "fries"
+}
