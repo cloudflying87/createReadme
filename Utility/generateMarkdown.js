@@ -2,7 +2,6 @@
 module.exports = {
   generateMarkdown: function(data){
   return `# ${data.title}
-Created by: ${data.username}
 
 ## Description
 ${data.description}
@@ -23,7 +22,7 @@ ${data.installation}
 ${data.usage}
 
 ## License
-${data.license}
+${badge}
 
 ## Contributing 
 ${data.contribute}
@@ -32,6 +31,9 @@ ${data.contribute}
 ${data.tests}
 
 ## Questions
-${data.questions}
+[GitHub Profile](https://github.com/${data.username})
+
+[Email me with Questions](mailto:${data.email})
+
   `
 }}
