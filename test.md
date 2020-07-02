@@ -19,7 +19,7 @@
 
 
 ## Installation
-undefined
+npm install _
 
 ## Usage
 undefined
@@ -34,8 +34,8 @@ undefined
 undefined
 
 ## Questions
-[GitHub Profile](https://github.com/csa)
+[GitHub Profile](https://github.com/lskj)
 
-[Email me with Questions](mailto:)
+[Email me with Questions](mailto:safd)
 
   
