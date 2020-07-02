@@ -108,19 +108,19 @@ inquirer
         //         badge = 'No license picked'
         //         console.log(answers.license)
         // }
-        if (answers.license == 'mit'){
-            badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-        }
-        if (answers.license == 'unlicense'){
-            badge = '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
-        }
-        if (answers.license == 'apache-2.0'){
-            badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
-        }
-        if (answers.license == 'mpl-2.0'){
-            badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
-        }
-        console.log(answers.tocitems[0])
+        // if (answers.license == 'mit'){
+        //     badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+        // }
+        // if (answers.license == 'unlicense'){
+        //     badge = '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
+        // }
+        // if (answers.license == 'apache-2.0'){
+        //     badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+        // }
+        // if (answers.license == 'mpl-2.0'){
+        //     badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
+        // }
+        console.log(answers[])
         writeFileAsync('test.md',generate.generateMarkdown(answers))
     })
     .catch(console.error)
