@@ -1,7 +1,7 @@
-# Create an good readme
+# 
 
 ## Description
-This project was created to be able create a readme from the command line. 
+
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ This project was created to be able create a readme from the command line.
 
 
 ## Installation
-npm install _
+undefined
 
 ## Usage
 
@@ -28,13 +28,14 @@ npm install _
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Contributing 
-da
+
 
 ## Tests
-asdf
+
 
 ## Questions
-[GitHub Profile](https://github.com/cloudflying87)
-[Email me with Questions](mailto:davidhale87@gmail.com)
+[GitHub Profile](https://github.com/)
+
+[Email me with Questions](mailto:)
 
   

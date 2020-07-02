@@ -28,31 +28,73 @@ inquirer
         message: 'Please include a description of your project',
       },
       {
+        type: 'confirm',
+        name: 'tableofcontents',
+        message: 'Do you want a table of contents?',
+        default: false
+      },
+      {
+        type: 'checkbox',
+        name: 'tocitems',
+        message: 'What items would you like on your table of contents?',
+        choices: [
+          {name:'Installation'},
+          {name: 'Usage'},
+          {name:'License'},
+          {name:'Contributing'},
+          {name:'Tests'}
+          ],
+          when: (answers) => {
+            return answers.tableofcontents == true
+          }
+      },
+      {
         type: 'input',
         name: 'installation',
         message: 'Installation Instructions?',
-        default: 'npm install _'
+        default: 'npm install _',
+        when: (answers) => {
+          if (answers.tableofcontents ==true && answers.tocitems.includes('Installation')){
+            return true
+          }
+        },
       },
       {
         type: 'input',
         name: 'usage',
         message: 'The designed usage of this project',
+        when: (answers) => {
+          if (answers.tableofcontents ==true && answers.tocitems.includes('Usage')){
+            return true
+          }}
       },
       {
         type: 'list',
         name: 'license',
         message: 'What license do you want to use?',
         choices: ['mit', 'apache-2.0','MPL 2.0','unlicense'],
+        when: (answers) => {
+          if (answers.tableofcontents ==true && answers.tocitems.includes('License')){
+            return true
+          }}
       },
       {
         type: 'input',
         name: 'contribute',
         message: 'What is needed to contribute to this project?',
+        when: (answers) => {
+          if (answers.tableofcontents ==true && answers.tocitems.includes('Contributing')){
+            return true
+          }}
       },
       {
         type: 'input',
         name: 'tests',
         message: 'What test cases should be included?',
+        when: (answers) => {
+          if (answers.tableofcontents ==true && answers.tocitems.includes('Tests')){
+            return true
+          }}
       },
     ])
     .then(answers => {
@@ -78,6 +120,7 @@ inquirer
         if (answers.license == 'mpl-2.0'){
             badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
         }
+        console.log(answers.tocitems[0])
         writeFileAsync('test.md',generate.generateMarkdown(answers))
     })
     .catch(console.error)
