@@ -1,8 +1,9 @@
 const fs = require('fs');
 const util = require('util')
 const inquirer = require('inquirer');
-const generate = require('./Utility/generateMarkdown');
+// const generate = require('./Utility/generateMarkdown');
 const writeFileAsync = util.promisify(fs.writeFile)
+const appendFileAsync = util.promisify(fs.appendFile)
 
 // array of questions for user
 function promptUser() {
@@ -50,7 +51,7 @@ return inquirer.prompt([
       },
       {
         type: 'input',
-        name: 'installation',
+        name: 'Installation',
         message: 'Installation Instructions?',
         default: 'npm install _',
         when: (answers) => {
@@ -61,7 +62,7 @@ return inquirer.prompt([
       },
       {
         type: 'input',
-        name: 'usage',
+        name: 'Usage',
         message: 'The designed usage of this project',
         when: (answers) => {
           if (answers.tableofcontents ==true && answers.tocitems.includes('Usage')){
@@ -70,7 +71,7 @@ return inquirer.prompt([
       },
       {
         type: 'list',
-        name: 'license',
+        name: 'License',
         message: 'What license do you want to use?',
         choices: ['mit', 'apache-2.0','MPL 2.0','unlicense'],
         when: (answers) => {
@@ -80,7 +81,7 @@ return inquirer.prompt([
       },
       {
         type: 'input',
-        name: 'contribute',
+        name: 'Contributing',
         message: 'What is needed to contribute to this project?',
         when: (answers) => {
           if (answers.tableofcontents ==true && answers.tocitems.includes('Contributing')){
@@ -89,7 +90,7 @@ return inquirer.prompt([
       },
       {
         type: 'input',
-        name: 'tests',
+        name: 'Tests',
         message: 'What test cases should be included?',
         when: (answers) => {
           if (answers.tableofcontents ==true && answers.tocitems.includes('Tests')){
@@ -100,49 +101,83 @@ return inquirer.prompt([
   }
 promptUser()  
     .then(answers => {
+      writeFileAsync('test.md',generateHeader(answers));
+      generateTOC(answers);
+      generateTOCItems(answers);
+      writeData(answers);
+      appendFileAsync('test.md',questionBlock(answers));
         
-        if (answers.license == 'mit'){
-            badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-        }
-        if (answers.license == 'unlicense'){
-            badge = '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
-        }
-        if (answers.license == 'apache-2.0'){
-            badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
-        }
-        if (answers.license == 'mpl-2.0'){
-            badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
-        }
-        console.log(answers.username)
-        writeFileAsync('test.md',generate.generateMarkdown(answers))
     })
     .catch(console.error)
-/*
-    ## Table of Contents
 
-*[Installation](#installation)${'\n'}
-*[Usage](#usage)${'\n'}
-*[License](#license)${'\n'}
-*[Contributing](#contributing)${'\n'}
-*[Tests](#tests)${'\n'}
-*[Questions](#questions)${'\n'}
 
-## Installation
-${data.installation}
+function generateHeader(data) {
+      return `
+# ${data.title}
 
-## Usage
-${data.usage}
+## Description
+${data.description}
+      `
+}
 
-## License
-${badge}
+function generateTOC(data) {
+ if (data.tableofcontents) {
+   appendFileAsync('test.md','\n'+`## Table of Contents`)
+ }}
 
-## Contributing 
-${data.contribute}
+function generateTOCItems(data) {
+let tocContents = data.tocitems
+if (data.tableofcontents == true){
+  const tocLength = tocContents.length 
+  for (let i = 0; i < tocLength; i++) {
+      appendFileAsync('test.md','\n\n'+`*[${data.tocitems[i]}](#${data.tocitems[i]})`)
+}}
+}
 
-## Tests
-${data.tests}
+function writeData(data){
+  if (data.tableofcontents == true){
+    let tocContents = data.tocitems
+    let content = ''
+    for (let i = 0; i < tocContents.length; i++) {
+      badge = ''
+      if (data.tocitems[i] == 'Installation' ){
+        content = data.Installation
+      } else if (data.tocitems[i] == "License"){
+        content = data.License
+        badgeGet(data)
+      } else if (data.tocitems[i] == "Contributing"){
+        content = data.Contributing
+      } else if (data.tocitems[i] == "Usage"){
+        content = data.Usage
+      } else if (data.tocitems[i] == "Tests"){
+        content = data.Tests
+      }
+      appendFileAsync('test.md','\n\n'+`## ${data.tocitems[i]}\n\n${content}\n\n${badge}`)
+    }
+  }
+}
 
+    
+function questionBlock(data){
+  return `
 ## Questions
 [GitHub Profile](https://github.com/${data.username})
 
-[Email me with Questions](mailto:${data.email}) */
+[Email me with Questions](mailto:${data.email})`
+}
+
+let badge = ''
+function badgeGet(data){
+    if (data.License == 'mit'){
+      badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+  }
+   if (data.License == 'unlicense'){
+      badge = '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
+  }
+    if (data.License == 'apache-2.0'){
+      badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+  }
+    if (data.License == 'mpl-2.0'){
+      badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
+  }
+}
