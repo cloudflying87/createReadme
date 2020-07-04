@@ -6,6 +6,7 @@ const writeFileAsync = util.promisify(fs.writeFile)
 const appendFileAsync = util.promisify(fs.appendFile)
 
 // array of questions for user
+let answerGlobal = ''
 function promptUser() {
 return inquirer.prompt([
     {
@@ -82,7 +83,7 @@ return inquirer.prompt([
       {
         type: 'input',
         name: 'Contributing',
-        message: 'What is needed to contribute to this project?',
+        message: 'Contribution guidelines',
         when: (answers) => {
           if (answers.tableofcontents ==true && answers.tocitems.includes('Contributing')){
             return true
@@ -91,7 +92,7 @@ return inquirer.prompt([
       {
         type: 'input',
         name: 'Tests',
-        message: 'What test cases should be included?',
+        message: 'Test instructions',
         when: (answers) => {
           if (answers.tableofcontents ==true && answers.tocitems.includes('Tests')){
             return true
@@ -99,14 +100,17 @@ return inquirer.prompt([
       },
     ])
   }
+
+let writeString =''
 promptUser()  
     .then(answers => {
-      writeFileAsync('test.md',generateHeader(answers));
-      thengenerateTOC(answers);
+      answerGlobal = answers
+      generateHeader(answerGlobal);
+      writeFileAsync('test.md',writeString);
+      generateTOC(answerGlobal);
       generateTOCItems(answers);
       writeData(answers);
       appendFileAsync('test.md',questionBlock(answers));
-        
     })
     .catch(console.error)
 
@@ -115,12 +119,18 @@ function generateHeader(data) {
   if (data.tableofcontents ==true && data.tocitems.includes('License')){
     badgeGet(data)
   }
-      return `
+writeString = `
 # ${data.title}
 ${badge}
 ## Description
 ${data.description}
       `
+//       return `
+// # ${data.title}
+// ${badge}
+// ## Description
+// ${data.description}
+//       `
 }
 
 function generateTOC(data) {

@@ -1,18 +1,20 @@
 
-# Making a readme
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# awesome
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Description
-this is my description
+asd
       
 ## Table of Contents
 
-*[Contributing](#Contributing)
+*[Installation](#Installation)
+
+*[Usage](#Usage)
 
 *[License](#License)
 
-*[Tests](#Tests)
+*[Contributing](#Contributing)
 
-*[Installation](#Installation)
+*[Tests](#Tests)
 
 ## Installation
 
@@ -20,24 +22,22 @@ npm install _
 
 ## Usage
 
-Usage
+usage
 
 ## License
 
-apache-2.0
+mit
 
 ## Contributing
 
-nothing
+contribute
 
 ## Tests
 
-No test cases
+test
 
 
 ## Questions
-[GitHub Profile](https://github.com/cloudflying87)
+[GitHub Profile](https://github.com/david)
 
-[Email me with Questions](mailto:davidhale87@gmail.com)
-
-*[Usage](#Usage)
+[Email me with Questions](mailto:gmail)
