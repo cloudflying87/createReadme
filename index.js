@@ -102,7 +102,7 @@ return inquirer.prompt([
 promptUser()  
     .then(answers => {
       writeFileAsync('test.md',generateHeader(answers));
-      generateTOC(answers);
+      thengenerateTOC(answers);
       generateTOCItems(answers);
       writeData(answers);
       appendFileAsync('test.md',questionBlock(answers));
@@ -112,9 +112,12 @@ promptUser()
 
 
 function generateHeader(data) {
+  if (data.tableofcontents ==true && data.tocitems.includes('License')){
+    badgeGet(data)
+  }
       return `
 # ${data.title}
-
+${badge}
 ## Description
 ${data.description}
       `
@@ -123,7 +126,8 @@ ${data.description}
 function generateTOC(data) {
  if (data.tableofcontents) {
    appendFileAsync('test.md','\n'+`## Table of Contents`)
- }}
+ }
+}
 
 function generateTOCItems(data) {
 let tocContents = data.tocitems
@@ -144,7 +148,6 @@ function writeData(data){
         content = data.Installation
       } else if (data.tocitems[i] == "License"){
         content = data.License
-        badgeGet(data)
       } else if (data.tocitems[i] == "Contributing"){
         content = data.Contributing
       } else if (data.tocitems[i] == "Usage"){
@@ -152,15 +155,14 @@ function writeData(data){
       } else if (data.tocitems[i] == "Tests"){
         content = data.Tests
       }
-      appendFileAsync('test.md','\n\n'+`## ${data.tocitems[i]}\n\n${content}\n\n${badge}`)
+      appendFileAsync('test.md','\n\n'+`## ${data.tocitems[i]}\n\n${content}`)
     }
   }
 }
 
-    
 function questionBlock(data){
   return `
-## Questions
+\n\n## Questions
 [GitHub Profile](https://github.com/${data.username})
 
 [Email me with Questions](mailto:${data.email})`
