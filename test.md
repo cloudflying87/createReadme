@@ -1,12 +1,12 @@
 
-# awesome
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Create Readme
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 ## Description
-asd
+to create a command line readme generator
       
-## Table of Contents
 
 *[Installation](#Installation)
+## Table of Contents
 
 *[Usage](#Usage)
 
@@ -14,30 +14,30 @@ asd
 
 *[Contributing](#Contributing)
 
-*[Tests](#Tests)
-
 ## Installation
 
 npm install _
 
 ## Usage
 
-usage
+for developers to create a readme
 
 ## License
 
-mit
+unlicense
 
 ## Contributing
 
-contribute
+to be decided
+
+*[Tests](#Tests)
 
 ## Tests
 
-test
+to come in the future
 
 
 ## Questions
-[GitHub Profile](https://github.com/david)
+[GitHub Profile](https://github.com/cloudflying87)
 
-[Email me with Questions](mailto:gmail)
+[Email me with Questions](mailto:davidhale87@gmail.com)
