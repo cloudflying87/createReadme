@@ -1,41 +1,43 @@
-# 
 
+# Create Readme
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 ## Description
+to create a command line readme generator
+      
 
-
+*[Installation](#Installation)
 ## Table of Contents
 
-*[Installation](#installation)
+*[Usage](#Usage)
 
-*[Usage](#usage)
+*[License](#License)
 
-*[License](#license)
-
-*[Contributing](#contributing)
-
-*[Tests](#tests)
-
-*[Questions](#questions)
-
+*[Contributing](#Contributing)
 
 ## Installation
+
 npm install _
 
 ## Usage
-undefined
+
+for developers to create a readme
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Contributing 
-undefined
+unlicense
+
+## Contributing
+
+to be decided
+
+*[Tests](#Tests)
 
 ## Tests
-undefined
+
+to come in the future
+
 
 ## Questions
-[GitHub Profile](https://github.com/lskj)
+[GitHub Profile](https://github.com/cloudflying87)
 
-[Email me with Questions](mailto:safd)
-
-  
+[Email me with Questions](mailto:davidhale87@gmail.com)

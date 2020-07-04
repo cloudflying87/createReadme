@@ -1,10 +1,13 @@
 // function to generate markdown for README
-module.exports = {
-  generateMarkdown: function(data){
-  return `# ${data.title}
 
+function generateHeader2(data) {
+  return `# ${data.title}
 ## Description
 ${data.description}
 
   `
-}}
+}
+module.exports = {
+  generateHeader(data)
+
+}
