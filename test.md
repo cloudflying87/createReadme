@@ -1,43 +1,31 @@
 
-# Create a readme
-[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
-## Description
-The purpose of this project was to create a command line readme generator. This allows developers to create a readme very quickly from the command line. I have included the ablitity to decide whether or not you want a table of contents and what items you would like to include on that table. 
-      
+# Create Readme
 
-*[License](#License)
+## Description
+This is a test
+      
+## Table of Contents
 
 *[Installation](#Installation)
-## Table of Contents
 
 *[Usage](#Usage)
 
-*[Tests](#Tests)
+*[License](#License)
 
 ## Installation
 
 npm install _
 
-*[Contributing](#Contributing)
-
 ## Usage
 
-create readme
+Usage
 
 ## License
 
-unlicense
-
-## Contributing
-
-To come
-
-## Tests
-
-To come also
+MPL 2.0
 
 
 ## Questions
 [GitHub Profile](https://github.com/cloudflying87)
 
-[Email me with Questions](mailto:davidhale87@gmail.com)
+[Email me with Questions](mailto:davidhale)

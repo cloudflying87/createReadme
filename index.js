@@ -103,14 +103,14 @@ return inquirer.prompt([
 
 let writeString =''
 promptUser()  
-    .then(answers => {
+    .then(async answers => {
       answerGlobal = answers
       generateHeader(answerGlobal);
-      writeFileAsync('test.md',writeString);
-      generateTOC(answerGlobal);
-      generateTOCItems(answers);
-      writeData(answers);
-      appendFileAsync('test.md',questionBlock(answers));
+      await writeFileAsync('test.md',writeString);
+      await generateTOC(answerGlobal);
+      await generateTOCItems(answers);
+      await writeData(answers);
+      await appendFileAsync('test.md',questionBlock(answers));
     })
     .catch(console.error)
 
@@ -133,22 +133,22 @@ ${data.description}
 //       `
 }
 
-function generateTOC(data) {
+async function generateTOC(data) {
  if (data.tableofcontents) {
-   appendFileAsync('test.md','\n'+`## Table of Contents`)
+   await appendFileAsync('test.md','\n'+`## Table of Contents`)
  }
 }
 
-function generateTOCItems(data) {
+async function generateTOCItems(data) {
 let tocContents = data.tocitems
 if (data.tableofcontents == true){
   const tocLength = tocContents.length 
   for (let i = 0; i < tocLength; i++) {
-      appendFileAsync('test.md','\n\n'+`*[${data.tocitems[i]}](#${data.tocitems[i]})`)
+      await appendFileAsync('test.md','\n\n'+`*[${data.tocitems[i]}](#${data.tocitems[i]})`)
 }}
 }
 
-function writeData(data){
+async function writeData(data){
   if (data.tableofcontents == true){
     let tocContents = data.tocitems
     let content = ''
@@ -165,7 +165,7 @@ function writeData(data){
       } else if (data.tocitems[i] == "Tests"){
         content = data.Tests
       }
-      appendFileAsync('test.md','\n\n'+`## ${data.tocitems[i]}\n\n${content}`)
+      await appendFileAsync('test.md','\n\n'+`## ${data.tocitems[i]}\n\n${content}`)
     }
   }
 }
